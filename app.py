@@ -1,9 +1,9 @@
-
-import streamlit as st
+mport streamlit as st
 import pandas as pd
 import altair as alt
 
-file_path = '/content/forecast_results_2024_2029 (5) (1).xlsx'
+# Use the local file name since it has been copied to the same directory
+file_path = 'forecast_results_2024_2029 (5) (1).xlsx'
 df = pd.read_excel(file_path)
 
 year_cols = [col for col in df.columns if col.startswith('pred_')]
@@ -73,7 +73,7 @@ else:
         x=alt.X('Forecast Value:Q'),
         y=alt.Y('Area:N', sort='-x'),
         tooltip=['Area', 'Forecast Value']
-    ).properties(title=f'Top {top_n} Countries by Total Forecast Value').interactive()
+    ).properties(title=f'Top 10 Countries by Total Forecast Value').interactive()
 
     col1, col2 = st.columns(2)
     with col1:
